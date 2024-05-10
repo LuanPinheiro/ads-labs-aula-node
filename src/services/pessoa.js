@@ -1,17 +1,29 @@
-function list() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+const Pessoa = require("../models/pessoa")
+
+async function list(queryParams) {
+    return await Pessoa.findAll({ where: queryParams })
 }
 
-function create() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+async function create(dados) {
+    const novaPessoa = await Pessoa.create(dados)
+
+    return novaPessoa
 }
 
-function update() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+async function update(idPessoa, dados) {
+    const pessoaEncontrada = await Pessoa.findByPk(idPessoa)
+
+    pessoaEncontrada.nome = dados.nome ?? pessoaEncontrada.nome
+    pessoaEncontrada.data_nascimento = dados.data_nascimento ?? pessoaEncontrada.data_nascimento
+    await pessoaEncontrada.save();
+
+    return pessoaEncontrada
 }
 
-function remove() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+async function remove(idPessoa) {
+    const pessoaEncontrada = await Pessoa.findByPk(idPessoa)
+
+    await pessoaEncontrada.destroy()
 }
 
 module.exports = { list, create, update, remove }

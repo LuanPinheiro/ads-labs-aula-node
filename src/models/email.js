@@ -1,7 +1,8 @@
 const database = require("../database/database")
 const Sequelize = require("sequelize")
+const Pessoa = require("./pessoa")
 
-const Emails = database.define("emails", {
+const Email = database.define("emails", {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -12,4 +13,6 @@ const Emails = database.define("emails", {
     timestamp: true
 })
 
-module.exports = Emails
+Email.belongsTo(Pessoa)
+
+module.exports = Email

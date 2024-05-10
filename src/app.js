@@ -1,9 +1,9 @@
 require("dotenv").config({ path: ".env"})
+require("./database/database")
 const express = require("express")
 const pessoaRouter = require("./routes/pessoa")
 const emailRouter = require("./routes/email")
 
-require("./database/database")
 
 const app = express()
 app.use(express.json())

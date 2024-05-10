@@ -1,9 +1,10 @@
-const service = require("../services/pessoa")
+const service = require("../services/email")
 
 function list(req, res) {
-    return res.status(200).send({ 
-        pessoas: service.list()
-    })
+    service.list(req.query)
+        .then((emails) => {
+            return res.send({ dados: emails })
+        })
 }
 
 function create(req, res) {

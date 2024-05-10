@@ -13,4 +13,5 @@ const database = new Sequelize(
 module.exports = database
 
 require("../models/pessoa")
+require("../models/email")
 database.sync()

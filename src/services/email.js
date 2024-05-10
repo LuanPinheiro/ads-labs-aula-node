@@ -1,5 +1,7 @@
-function list() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+const Email = require("../models/email")
+
+async function list(queryParams) {
+    return await Email.findAll({ where: queryParams })
 }
 
 function create() {
