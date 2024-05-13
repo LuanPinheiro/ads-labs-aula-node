@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "4e35fcbf-9f0c-41c7-bba3-c69b01de28f4",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27662780",
+		"_collection_link": "https://projeto-trilhas-gsort.postman.co/workspace/ADS-Labs~5aab5836-dd60-4bac-9ee2-1d0a164f9f93/collection/27662780-4e35fcbf-9f0c-41c7-bba3-c69b01de28f4?action=share&source=collection_link&creator=27662780"
+	},
+	"item": [
+		{
+			"name": "Pessoas",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/pessoa?nome=Luan",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"pessoa"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Luan"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Novo Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Luan\",\n    \"data_nascimento\": \"2001/12/31\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/pessoa",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Registro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Camila\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/pessoa/1",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"pessoa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Registro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/pessoa/1",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"pessoa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Emails",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/email?pessoaId=1",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"email"
+							],
+							"query": [
+								{
+									"key": "pessoaId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Novo Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"yuri@gmail.com\",\n    \"pessoaId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/email",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Registro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"matheus@gmail.com\",\n    \"pessoaId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/email/2",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"email",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Registro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{IP}}:{{PORT}}/email/1",
+							"host": [
+								"{{IP}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"email",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
