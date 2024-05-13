@@ -4,16 +4,29 @@ async function list(queryParams) {
     return await Email.findAll({ where: queryParams })
 }
 
-function create() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+async function create(dados) {
+    const novoEmail = await Email.create(dados)
+
+    return novoEmail
 }
 
-function update() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+async function update(idEmail, dados) {
+    const emailEncontrado = await Email.findByPk(idEmail)
+
+    if(emailEncontrado){
+        emailEncontrado.email = dados.email ?? emailEncontrado.email
+        await emailEncontrado.save();
+    }
+
+    return emailEncontrado
 }
 
-function remove() {
-    return ["Luan", "Camila", "Matheus", "Yuri"]
+async function remove(idEmail) {
+    const emailEncontrado = await Email.findByPk(idEmail)
+    if(emailEncontrado)
+        await emailEncontrado.destroy()
+
+    return emailEncontrado
 }
 
 module.exports = { list, create, update, remove }
