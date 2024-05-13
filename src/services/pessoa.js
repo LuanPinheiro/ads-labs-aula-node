@@ -26,6 +26,8 @@ async function remove(idPessoa) {
     const pessoaEncontrada = await Pessoa.findByPk(idPessoa)
     if(pessoaEncontrada)
         await pessoaEncontrada.destroy()
+
+    return pessoaEncontrada
 }
 
 module.exports = { list, create, update, remove }
