@@ -24,6 +24,10 @@ function create(req, res) {
 function update(req, res) {
     service.update(req.params.id, req.body)
         .then((pessoaEditada) => {
+            console.log(pessoaEditada)
+            if(!pessoaEditada)
+                return res.send({ message: "Pessoa não foi encontrada"})
+
             return res.send({
                 message: "Pessoa editada com sucesso",
                 pessoa: pessoaEditada
@@ -36,6 +40,9 @@ function update(req, res) {
 function remove(req, res) {
     service.remove(req.params.id)
         .then((pessoaRemovida) => {
+            if(!pessoaRemovida)
+                return res.send({ message: "Pessoa não foi encontrada"})
+
             return res.send({
                 message: "Pessoa removida com sucesso",
                 pessoa: pessoaRemovida

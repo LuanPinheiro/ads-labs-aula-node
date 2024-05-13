@@ -13,17 +13,19 @@ async function create(dados) {
 async function update(idPessoa, dados) {
     const pessoaEncontrada = await Pessoa.findByPk(idPessoa)
 
-    pessoaEncontrada.nome = dados.nome ?? pessoaEncontrada.nome
-    pessoaEncontrada.data_nascimento = dados.data_nascimento ?? pessoaEncontrada.data_nascimento
-    await pessoaEncontrada.save();
+    if(pessoaEncontrada){
+        pessoaEncontrada.nome = dados.nome ?? pessoaEncontrada.nome
+        pessoaEncontrada.data_nascimento = dados.data_nascimento ?? pessoaEncontrada.data_nascimento
+        await pessoaEncontrada.save();
+    }
 
     return pessoaEncontrada
 }
 
 async function remove(idPessoa) {
     const pessoaEncontrada = await Pessoa.findByPk(idPessoa)
-
-    await pessoaEncontrada.destroy()
+    if(pessoaEncontrada)
+        await pessoaEncontrada.destroy()
 }
 
 module.exports = { list, create, update, remove }
