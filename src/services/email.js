@@ -15,6 +15,7 @@ async function update(idEmail, dados) {
 
     if(emailEncontrado){
         emailEncontrado.email = dados.email ?? emailEncontrado.email
+        emailEncontrado.pessoaId = dados.pessoaId ?? emailEncontrado.pessoaId
         await emailEncontrado.save();
     }
 
